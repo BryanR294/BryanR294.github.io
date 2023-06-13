@@ -44,6 +44,7 @@ button{
 
 #left{
     left:20%;
+    display: none;
 }
 #star{
     z-index: -1;
