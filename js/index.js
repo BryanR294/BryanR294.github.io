@@ -87,6 +87,7 @@ function previousImage(){
     nebula.style.display = "block";
     title.innerText = "Nebula";
     title.style.fontSize = "25vw";
+    leftBtn.style.display = "none";
     // title.style.top = "3%";
     // title.style.left = "10%";
   }
@@ -108,6 +109,7 @@ function nextImage(){
     title.innerText = "Protostar";
     title.style.fontSize = "18vw";
     // title.style.top = "20%";
+    leftBtn.style.display = "block";
     imageIndex++;
   }
   else if(imageIndex === 1){
