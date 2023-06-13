@@ -4,7 +4,7 @@ document.addEventListener('mousemove', handleMousemove);
 function handleMousemove(event) {
   // Calculate the horizontal and vertical distances between the mouse and the center of each image
   const images = document.getElementsByClassName('movable');
-  const shiftSpeed = 30;
+  const shiftSpeed = 100;
   const mouseX = event.clientX;
   const mouseY = event.clientY;
   const resetSpeed = 10;
