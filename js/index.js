@@ -47,6 +47,8 @@ function moveCustomCursor(){
 let imageIndex = 0;
 
 function previousImage(){
+  const leftBtn = document.getElementById("Left");
+  const rightBtn = document.getElementById("Right");
   const text = document.getElementById("text");
   const nebula = document.getElementById("nebula");
   const protostar = document.getElementById("protostar");
@@ -58,6 +60,7 @@ function previousImage(){
     blackhole.style.display = "none";
     supernova.style.display = "block";
     title.innerText = "Supernova";
+    rightBtn.style.display = "block";
     imageIndex--;
   }
   else if(imageIndex === 3){
@@ -90,6 +93,8 @@ function previousImage(){
 }
 
 function nextImage(){
+  const leftBtn = document.getElementById("Left");
+  const rightBtn = document.getElementById("Right");
   const title = document.getElementById("title");
   const nebula = document.getElementById("nebula");
   const protostar = document.getElementById("protostar");
@@ -127,5 +132,6 @@ function nextImage(){
     supernova.style.display = "none";
     blackhole.style.display = "block";
     title.innerText = "blackhole";
+    rightBtn.style.display = "none";
   }
 }
