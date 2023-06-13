@@ -41,7 +41,9 @@ button{
 }
     
 button:hover{
-    background-color: gray;
+    top: 73%;
+    background-color: lightgray;
+    border-width: 5px;
     transition-duration: .3s;
 }
     
