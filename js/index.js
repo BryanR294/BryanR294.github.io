@@ -47,8 +47,8 @@ function moveCustomCursor(){
 let imageIndex = 0;
 
 function previousImage(){
-  const leftBtn = document.getElementById("Left");
-  const rightBtn = document.getElementById("Right");
+  const leftBtn = document.getElementById("left");
+  const rightBtn = document.getElementById("right");
   const text = document.getElementById("text");
   const nebula = document.getElementById("nebula");
   const protostar = document.getElementById("protostar");
@@ -93,8 +93,8 @@ function previousImage(){
 }
 
 function nextImage(){
-  const leftBtn = document.getElementById("Left");
-  const rightBtn = document.getElementById("Right");
+  const leftBtn = document.getElementById("left");
+  const rightBtn = document.getElementById("right");
   const title = document.getElementById("title");
   const nebula = document.getElementById("nebula");
   const protostar = document.getElementById("protostar");
