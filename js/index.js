@@ -1,139 +1,72 @@
-document.addEventListener('mousemove', handleMousemove);
-// document.addEventListener('mousemove',moveCustomCursor);
-
-function handleMousemove(event) {
-  // Calculate the horizontal and vertical distances between the mouse and the center of each image
-  const images = document.getElementsByClassName('movable');
-  const shiftSpeed = 100;
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
-  const resetSpeed = 10;
-
-  Array.from(images).forEach(image => {
-    const imageCenterX = image.offsetLeft + (image.offsetWidth / 2);
-    const imageCenterY = image.offsetTop + (image.offsetHeight / 2);
-    const distanceX = mouseX - imageCenterX;
-    const distanceY = mouseY - imageCenterY;
-
-    // Calculate the amount to shift the image
-    const shiftX = (distanceX / shiftSpeed) * -1;
-    const shiftY = (distanceY / shiftSpeed) * -1;
-
-    // Apply the shift to the image's position
-    image.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
-
-    // Check if the mouse is outside the window bounds
-    const isMouseOutsideWindow =
-      mouseX < 0 ||
-      mouseY < 0 ||
-      mouseX > window.innerWidth ||
-      mouseY > window.innerHeight;
-
-    // Slowly move the image back to its original position if the mouse is outside the window
-    if (isMouseOutsideWindow) {
-      const resetShiftX = (image.offsetLeft - imageCenterX) / resetSpeed;
-      const resetShiftY = (image.offsetTop - imageCenterY) / resetSpeed;
-
-      image.style.transform = `translate(${resetShiftX}px, ${resetShiftY}px)`;
+class Star{
+    constructor(name, DOM){
+        this.name = name;
+        this.DOM = DOM;
     }
-  });
 }
 
-function moveCustomCursor(){
-  const pointer = document.getElementById("cursor");
-  cursor.style.transform = `translate(${mouseX - 20}px, ${mouseY - 20}px)`;
-}
+const Nebula = new Star("Nebula", document.getElementById("nebula"));
+const Protostar = new Star("Protostar", document.getElementById("protostar"));
+const OrangeStar = new Star("Star", document.getElementById("orange-star"));
+const Supergiant = new Star("Supergiant", document.getElementById("supergiant"));
+const Supernova = new Star("Supernova", document.getElementById("supernova"));
+const Blackhole = new Star("Blackhole", document.getElementById("blackhole"));
+// let starEl = document.getElementById("yellow-star");
+// let redGiantEl = document.getElementById("red-giant");
+// let neutronStarEl = document.getElementById("neutron-star");
 
+let nameEl = document.getElementById("name-text");
+let stageEl = document.getElementById("stage-text");
+let ageEl = document.getElementById("age-text");
+
+const SUPER_MASS_STARS = [Nebula,Protostar,OrangeStar,Supergiant,Supernova,Blackhole];
 let imageIndex = 0;
+let currSelection = "super-mass";
 
-function previousImage(){
-  const leftBtn = document.getElementById("left");
-  const rightBtn = document.getElementById("right");
-  const text = document.getElementById("text");
-  const nebula = document.getElementById("nebula");
-  const protostar = document.getElementById("protostar");
-  const star = document.getElementById("reg-star");
-  const supergiant = document.getElementById("supergiant");
-  const supernova = document.getElementById("supernova");
-  const blackhole = document.getElementById("blackhole");
-  if(imageIndex === 4){
-    blackhole.style.display = "none";
-    supernova.style.display = "block";
-    title.innerText = "Supernova";
-    rightBtn.style.display = "block";
-    imageIndex--;
-  }
-  else if(imageIndex === 3){
-    supernova.style.display = "none";
-    supergiant.style.display = "block";
-    title.innerText = "Supergiant";
-    imageIndex--;
-  }
-  else if(imageIndex === 2){
-    supergiant.style.display = "none";
-    star.style.display = "block";
-    title.innerText = "Star";
-    imageIndex--;
-  }
-  else if(imageIndex === 1){
-    star.style.display = "none";
-    protostar.style.display = "block";
-    title.innerText = "Protostar";
+updateInformation(Nebula);
 
-    imageIndex--;
-  }
-  else{
-    protostar.style.display = "none";
-    nebula.style.display = "block";
-    title.innerText = "Nebula";
-    title.style.fontSize = "25vw";
-    leftBtn.style.display = "none";
-    // title.style.top = "3%";
-    // title.style.left = "10%";
-  }
+function nextStar(){
+    if(currSelection === "super-mass"){
+        let currStar = SUPER_MASS_STARS[imageIndex];
+        let nextStar = SUPER_MASS_STARS[imageIndex + 1];
+        currStar.DOM.style.display = "none";
+        nextStar.DOM.style.display = "block";
+        imageIndex++;
+        updateInformation(nextStar);
+    }
+    updateButtons();
 }
 
-function nextImage(){
-  const leftBtn = document.getElementById("left");
-  const rightBtn = document.getElementById("right");
-  const title = document.getElementById("title");
-  const nebula = document.getElementById("nebula");
-  const protostar = document.getElementById("protostar");
-  const star = document.getElementById("reg-star");
-  const supergiant = document.getElementById("supergiant");
-  const supernova = document.getElementById("supernova");
-  const blackhole = document.getElementById("blackhole");
-  if(imageIndex === 0){
-    nebula.style.display = "none";
-    protostar.style.display = "block";
-    title.innerText = "Protostar";
-    title.style.fontSize = "18vw";
-    // title.style.top = "20%";
-    leftBtn.style.display = "block";
-    imageIndex++;
-  }
-  else if(imageIndex === 1){
-    protostar.style.display = "none";
-    star.style.display = "block";
-    title.innerText = "Star";
-    imageIndex++;
-  }
-  else if(imageIndex === 2){
-    star.style.display = "none";
-    supergiant.style.display = "block";
-    title.innerText = "Supergiant";
-    imageIndex++;
-  }
-  else if(imageIndex === 3){
-    supergiant.style.display = "none";
-    supernova.style.display = "block";
-    title.innerText = "Supernova";
-    imageIndex++;
-  }
-  else{
-    supernova.style.display = "none";
-    blackhole.style.display = "block";
-    title.innerText = "blackhole";
-    rightBtn.style.display = "none";
-  }
+function lastStar(){
+    if(currSelection === "super-mass"){
+        let currStar = SUPER_MASS_STARS[imageIndex];
+        let nextStar = SUPER_MASS_STARS[imageIndex - 1];
+        currStar.DOM.style.display = "none";
+        nextStar.DOM.style.display = "block";
+        imageIndex--;
+        updateInformation(nextStar);
+    }
+    updateButtons();
+}
+
+function updateButtons(){
+    if(imageIndex === 0){
+        document.getElementById("left").style.display = "none";
+    }
+    else{
+        document.getElementById("left").style.display = "block";
+    }
+
+    if(imageIndex === 5){
+        document.getElementById("right").style.display = "none";
+    }
+    else{
+        document.getElementById("right").style.display = "block";
+    }
+}
+
+function updateInformation(Star){
+    nameEl.textContent = Star.name;
+    counter = imageIndex + 1;
+    stageEl.textContent = "Stage " + counter;
 }
