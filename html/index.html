@@ -6,21 +6,21 @@
         <link rel="stylesheet" type="text/css" href = "../css/style.css">
     </head>
     <body>  
-        <div class="flex-container" id="dropdown-container">
-            <a class="text"> Current Selection ⮟</a>
+        <!-- <div class="flex-container" id="dropdown-container"> -->
+            <!-- <a class="text"> Current Selection ⮟</a> -->
             <!-- <ul id="dropdown">
                 <li> Low mass</li>
                 <li> Medium Mass</li>
                 <li> High Mass</li>
                 <li> Super High Mass</li>
             </ul> -->
-        </div>
+        <!-- </div> -->
         <div class="flex-container">
             <img class="img" id="bg-img" src="../images/stars.jpg">
-            <div class="text-container" id="name-container"> 
-                <div><button onclick="lastStar()" class="UI" id="left"> Last </button></div> 
+            <div class="flex-container text-container" id="name-container"> 
+                <div><button onclick="lastStar()" class="UI" id="left"> ⬅</button></div> 
                 <h1 class="text" id="name-text"> (Star's Name)</h1> 
-                <div><button onclick="nextStar()" class="UI" id="right"> Next </button></div> 
+                <div><button onclick="nextStar()" class="UI" id="right"> ➡ </button></div> 
             </div>
 
             <div id="star-container">
@@ -31,7 +31,6 @@
                 <img class="img star" id="supernova" src="../images/supernova.png">
                 <img class="img star" id="blackhole" src="../images/blackhole.webp">
             </div>
-            <!-- <img class="UI" id="cursor" src="../images/starter-abstract-space-cursor-pack.png">  -->
             <!-- <div></div> -->
                 
             <div class="text-container" id="stage-container">
@@ -40,7 +39,10 @@
             <div class="text-container" id="age-container">
                 <h2 class="text" id="age-text"> (Star's Age) </h2>
             </div>
-            <!-- <div class="UI text" id="info-text"> The Nebula is the starting cycle. </div> -->
+            <div class="flex-container" id="info-container">
+                <button id="info-btn" onclick="displayInfo()">^</button>
+                <div id="info-text"> Display general information about the current stage of the nebula </div>
+            </div>
         </div> 
         <script src="../js/index.js"></script>
     </body>
